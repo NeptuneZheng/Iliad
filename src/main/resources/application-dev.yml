@@ -1,0 +1,13 @@
+spring:
+  data:
+    mongodb:
+      host:localhost
+      port:27017
+
+  server:
+    port: 8081
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views
+      suffix: .jsp
