@@ -16,13 +16,20 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     private MongoTemplate mongoTemplate;
 
+
     @Override
-    public int getMatchCount(String usr_name, String usr_password) {
-        return mongoTemplate.find(new Query(Criteria.where("usr_name").is(usr_name).and("usr_password").is(usr_password)),User.class).size();
+    public User findUserByUserID(String id) {
+        return mongoTemplate.findOne(new Query(Criteria.where("_id").is(id)),User.class);
     }
 
     @Override
     public User findUserByUserName(String usr_name) {
         return mongoTemplate.findOne(new Query(Criteria.where("usr_name").is(usr_name)),User.class);
+    }
+
+    @Override
+    public User addNewUser(User user) {
+        mongoTemplate.save(user);
+        return mongoTemplate.findOne(new Query(Criteria.where("usr_name").is(user.getUsr_name()).and("usr_password").is(user.getUsr_password())),User.class);
     }
 }

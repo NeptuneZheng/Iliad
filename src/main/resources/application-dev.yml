@@ -1,13 +1,17 @@
 spring:
-  data:
-    mongodb:
-      host:localhost
-      port:27017
+  profiles: dev
 
-  server:
-    port: 8081
+data:
+  mongodb:
+    host:localhost
+    port:27017
 
-  mvc:
-    view:
-      prefix: /WEB-INF/views
-      suffix: .jsp
+
+
+mvc:
+  view:
+    prefix: /WEB-INF/views
+    suffix: .jsp
+
+server:
+  port: 8080

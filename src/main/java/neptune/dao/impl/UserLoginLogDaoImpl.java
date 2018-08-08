@@ -5,6 +5,7 @@ import neptune.domain.UserLoginLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by ZHENGNE on 8/2/2018.

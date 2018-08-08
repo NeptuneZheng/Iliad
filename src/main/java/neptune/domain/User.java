@@ -1,11 +1,16 @@
 package neptune.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.io.Serializable;
 
 /**
  * Created by ZHENGNE on 7/30/2018.
  */
+@Document
 public class User implements Serializable{
+    @Id
     private String usr_id;
     private String usr_name;
     private String usr_password;
