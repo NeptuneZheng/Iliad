@@ -17,7 +17,6 @@ import java.util.Calendar;
 /**
  * Created by ZHENGNE on 8/2/2018.
  */
-@Transactional(value = "UserServiceImpl")
 @Service("UserServiceImpl")
 public class UserServiceImpl implements UserService {
 
@@ -43,6 +42,7 @@ public class UserServiceImpl implements UserService {
         return userDao.addNewUser(user);
     }
 
+    @Transactional
     @Override
     public void recordUserAction(String usr_name, String login_ip) {
         User user = userDao.findUserByUserName(usr_name);
