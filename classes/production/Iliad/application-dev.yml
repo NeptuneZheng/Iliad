@@ -6,14 +6,12 @@ data:
     host:localhost
     port:27017
 
-thymeleaf:
-  mode: LEGACYHTML5
 
 
 mvc:
   view:
-    prefix: /WEB-INF/views/
-    suffix: .html
+    prefix: /WEB-INF/views
+    suffix: .jsp
 
 server:
   port: 8080

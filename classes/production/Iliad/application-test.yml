@@ -1,0 +1,15 @@
+spring:
+  profiles: test
+  data:
+    mongodb:
+      host:localhost
+      port:27017
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .html
+
+server:
+  port: 8081
+
