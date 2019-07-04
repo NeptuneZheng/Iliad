@@ -12,9 +12,9 @@ import org.springframework.context.annotation.Configuration;
  * Created by ZHENGNE on 8/2/2018.
  */
 @SpringBootApplication
-@Configuration
-@EnableAutoConfiguration
-@ComponentScan(basePackages = "neptune") // must be used, if not UserServiceImpl @Transactional will error
+//@Configuration
+//@EnableAutoConfiguration
+//@ComponentScan(basePackages = "neptune") // must be used, if not UserServiceImpl @Transactional will error
 public class Application extends SpringBootServletInitializer {
 
     public static void main(String[] args) throws Exception{

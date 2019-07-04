@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -23,10 +24,14 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-//    @RequestMapping(value = {"/"})
-//    public ModelAndView indexPage(){
-//        return new ModelAndView("index");
-//    }
+    @RequestMapping(value = {"/"})
+    public RedirectView indexPage(){
+        RedirectView redirectView = new RedirectView();
+        redirectView.setContextRelative(true);
+        redirectView.setUrl("/index");
+        return redirectView;
+    }
+
 
     @RequestMapping(value = {"/index"})
     public String loginPage(){
