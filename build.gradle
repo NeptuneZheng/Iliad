@@ -1,12 +1,36 @@
-group 'Iliad'
-version '1.0-SNAPSHOT'
+import javax.xml.stream.events.Attribute
 
-apply plugin: 'groovy'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath('org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE')//pay attentionto the version
+        classpath('se.transmode.gradle:gradle-docker:1.2')
+    }
+}
+
 apply plugin: 'java'
 //apply plugin: 'spring-boot'
 apply plugin: 'war'
+apply plugin: 'groovy'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'docker' // end::plugin[] // This is used as the docker image prefix (org) group = 'gregturn'
+
+jar {
+    manifest{
+        attributes 'Main-Class': 'neptune.Application'
+    }
+    baseName = 'docker-spring-boot-gradle'
+    version = '1.0.0'
+}
+
+
+group 'Iliad'
+version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 repositories {
     mavenCentral()
@@ -28,6 +52,9 @@ dependencies {
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.10'  //for jsp use
     compile group: 'net.sourceforge.nekohtml', name: 'nekohtml', version: '1.9.22' //for html use
     compile group: 'commons-io', name: 'commons-io', version: '2.6'
+    //for log4j2
+    compile group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-yaml', version: '2.9.6'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.0.4.RELEASE'
 
 
     //for test
@@ -36,4 +63,18 @@ dependencies {
     testCompile group: 'org.spockframework', name: 'spock-spring', version: '1.1-groovy-2.4'
     testCompile group: 'org.spockframework', name: 'spock-core', version: '1.1-groovy-2.4'
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.0.4.RELEASE'
+}
+
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+//configurations {
+//    providedRuntime
+//    // remove default logger
+//    all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+//}
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.3'
 }
