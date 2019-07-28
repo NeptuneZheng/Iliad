@@ -10,4 +10,5 @@ public interface UserService {
     public User getUserInfoByName(String usr_name);
     public User addNewUser(User user);
     public void recordUserAction(String usr_name, String login_ip);
+    public boolean loginOrRegister(String name, String password);
 }

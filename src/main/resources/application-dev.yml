@@ -1,10 +1,10 @@
 spring:
   profiles: dev
-
-data:
-  mongodb:
-    host:localhost
-    port:27017
+  data:
+   mongodb:
+    host: localhost
+    port: 27017
+    database: local
 
 thymeleaf:
   mode: LEGACYHTML5

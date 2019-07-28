@@ -54,4 +54,21 @@ public class UserServiceImpl implements UserService {
             new Context.ThrowErrorManager().error("user info not exist, pls help to check!");
         }
     }
+
+    @Override
+    public boolean loginOrRegister(String name, String password){
+        boolean result = false;
+
+        result = verifyUserLogin(name,password);
+        if(!result){
+            User user = getUserInfoByName(name);
+            if(user == null){
+                user = new User(name,password);
+                addNewUser(user);
+                result = true;
+            }
+        }
+
+        return result;
+    }
 }
